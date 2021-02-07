@@ -1,0 +1,46 @@
+ 
+*** Reading local file: /home/serb/airflow/logs/titanic_pivot_hw3/mean_fare_titanic_save_to_db/2021-02-06T17:24:00.288926+00:00/2.log
+[2021-02-06 20:25:20,855] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: titanic_pivot_hw3.mean_fare_titanic_save_to_db 2021-02-06T17:24:00.288926+00:00 [queued]>
+[2021-02-06 20:25:20,893] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: titanic_pivot_hw3.mean_fare_titanic_save_to_db 2021-02-06T17:24:00.288926+00:00 [queued]>
+[2021-02-06 20:25:20,893] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2021-02-06 20:25:20,893] {taskinstance.py:1043} INFO - Starting attempt 2 of 2
+[2021-02-06 20:25:20,893] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2021-02-06 20:25:20,912] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): mean_fare_titanic_save_to_db> on 2021-02-06T17:24:00.288926+00:00
+[2021-02-06 20:25:20,918] {standard_task_runner.py:52} INFO - Started process 331315 to run task
+[2021-02-06 20:25:20,935] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'titanic_pivot_hw3', 'mean_fare_titanic_save_to_db', '2021-02-06T17:24:00.288926+00:00', '--job-id', '79', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/hw3.py', '--cfg-path', '/tmp/tmpngzmlf9i', '--error-file', '/tmp/tmpq3g6g0g_']
+[2021-02-06 20:25:20,936] {standard_task_runner.py:77} INFO - Job 79: Subtask mean_fare_titanic_save_to_db
+[2021-02-06 20:25:21,022] {logging_mixin.py:104} INFO - Running <TaskInstance: titanic_pivot_hw3.mean_fare_titanic_save_to_db 2021-02-06T17:24:00.288926+00:00 [running]> on host lilbuv
+[2021-02-06 20:25:21,086] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=titanic_pivot_hw3
+AIRFLOW_CTX_TASK_ID=mean_fare_titanic_save_to_db
+AIRFLOW_CTX_EXECUTION_DATE=2021-02-06T17:24:00.288926+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-02-06T17:24:00.288926+00:00
+[2021-02-06 20:25:21,113] {utils.py:141} INFO - NumExpr defaulting to 4 threads.
+[2021-02-06 20:25:21,205] {base.py:65} INFO - Using connection to: id: postgres_default. Host: postgres, Port: None, Schema: airflow, Login: postgres, Password: XXXXXXXX, extra: None
+[2021-02-06 20:25:21,223] {taskinstance.py:1455} ERROR - could not translate host name "postgres" to address: Temporary failure in name resolution
+Traceback (most recent call last):
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1112, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1285, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1315, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/operators/python.py", line 117, in execute
+    return_value = self.execute_callable()
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/operators/python.py", line 128, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/serb/airflow/modules/utils.py", line 55, in mean_fare_to_db
+    pg_hook.run(db_query, parameters=(row['Pclass'], row['Fare'],))
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/hooks/dbapi.py", line 173, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/airflow/providers/postgres/hooks/postgres.py", line 108, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/serb/anaconda3/lib/python3.8/site-packages/psycopg2/__init__.py", line 127, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres" to address: Temporary failure in name resolution
+
+[2021-02-06 20:25:21,225] {taskinstance.py:1496} INFO - Marking task as FAILED. dag_id=titanic_pivot_hw3, task_id=mean_fare_titanic_save_to_db, execution_date=20210206T172400, start_date=20210206T172520, end_date=20210206T172521
+[2021-02-06 20:25:21,261] {local_task_job.py:146} INFO - Task exited with return code 1
